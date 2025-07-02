@@ -88,11 +88,11 @@ export default function LoginPage() {
         )}
 
         {/* Demo Credentials */}
-        <div className="bg-blue-50 border border-blue-200 rounded-md p-3">
+        {/* <div className="bg-blue-50 border border-blue-200 rounded-md p-3">
           <p className="text-sm text-blue-800 font-medium mb-1">Demo Credentials:</p>
           <p className="text-xs text-blue-700">Email: demo@onevoice.com</p>
           <p className="text-xs text-blue-700">Password: Demo123!</p>
-        </div>
+        </div> */}
 
         {/* Email Field */}
         <div>
