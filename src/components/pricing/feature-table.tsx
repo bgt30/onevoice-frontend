@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { Check, X } from "lucide-react"
-import { PricingFeature } from "@/types/pricing"
+import { PricingFeature } from "@/types/api"
 import { cn } from "@/lib/utils"
 
 interface FeatureTableProps {

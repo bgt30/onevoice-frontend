@@ -10,7 +10,7 @@ import { VideoCard } from "@/components/dashboard/video-card"
 import { DashboardStatsComponent } from "@/components/dashboard/dashboard-stats"
 import { EmptyState } from "@/components/dashboard/empty-state"
 import { mockVideoProjects, mockDashboardStats } from "@/lib/mock-data"
-import { VideoProject, ViewMode, SortOption, FilterStatus } from "@/types/video"
+import { VideoProject, ViewMode, SortOption, FilterStatus } from "@/types/api"
 import { cn } from "@/lib/utils"
 
 export default function DashboardPage() {

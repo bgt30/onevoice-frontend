@@ -1,7 +1,7 @@
 import { Clock, Calendar, HardDrive, Languages, FileVideo, User } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { VideoProject } from "@/types/video"
+import { VideoProject } from "@/types/api"
 import { formatDuration, formatDate, formatFileSize } from "@/lib/mock-data"
 
 interface VideoMetadataProps {

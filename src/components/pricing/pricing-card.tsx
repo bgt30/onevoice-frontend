@@ -5,7 +5,7 @@ import { Check, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { PricingPlan } from "@/types/pricing"
+import { PricingPlan } from "@/types/api"
 import { cn } from "@/lib/utils"
 
 interface PricingCardProps {

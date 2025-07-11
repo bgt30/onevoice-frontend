@@ -3,7 +3,7 @@
 import * as React from "react"
 import { PricingCard } from "@/components/pricing/pricing-card"
 import { FeatureTable } from "@/components/pricing/feature-table"
-import { PricingPlan, PricingFeature } from "@/types/pricing"
+import { PricingPlan, PricingFeature } from "@/types/api"
 
 // Mock pricing data
 const pricingPlans: PricingPlan[] = [

@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
-import { VideoProject } from "@/types/video"
+import { VideoProject } from "@/types/api"
 import { formatDuration, formatDate, formatFileSize } from "@/lib/mock-data"
 
 

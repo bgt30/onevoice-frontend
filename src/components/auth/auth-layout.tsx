@@ -26,14 +26,14 @@ export function AuthLayout({ children, title, subtitle, showBackButton = true }:
         )}
 
         {/* Logo */}
-        <div className="flex justify-center mb-8">
+        {/* <div className="flex justify-center mb-8">
           <Link href="/" className="flex items-center space-x-2">
             <div className="h-10 w-10 bg-black rounded-md flex items-center justify-center">
               <span className="text-white font-bold text-lg">OV</span>
             </div>
             <span className="text-2xl font-bold text-black">OneVoice</span>
           </Link>
-        </div>
+        </div> */}
 
         {/* Header */}
         <div className="text-center">

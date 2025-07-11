@@ -21,7 +21,7 @@ import { VideoPlayer } from "@/components/video/video-player"
 import { VideoMetadata } from "@/components/video/video-metadata"
 import { DubbingControls } from "@/components/video/dubbing-controls"
 import { mockVideoProjects } from "@/lib/mock-data"
-import { VideoProject } from "@/types/video"
+import { VideoProject } from "@/types/api"
 
 export default function VideoDetailPage() {
   const params = useParams()

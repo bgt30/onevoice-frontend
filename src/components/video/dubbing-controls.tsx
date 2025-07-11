@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Select } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
 import { Badge } from "@/components/ui/badge"
-import { VideoProject } from "@/types/video"
+import { VideoProject } from "@/types/api"
 
 interface DubbingControlsProps {
   video: VideoProject

@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card"
-import { DashboardStats } from "@/types/video"
+import { DashboardStats } from "@/types/api"
 import { FileVideo, Clock, CheckCircle, XCircle } from "lucide-react"
 
 interface DashboardStatsProps {

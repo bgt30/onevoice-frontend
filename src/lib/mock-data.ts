@@ -1,4 +1,4 @@
-import { VideoProject, DashboardStats } from '@/types/video'
+import { VideoProject, DashboardStats } from '@/types/api'
 
 export const mockVideoProjects: VideoProject[] = [
   {
