@@ -16,7 +16,7 @@ const mockUserProfile: UserProfile = {
   createdAt: new Date("2024-01-15")
 }
 
-const mockSubscription: UserSubscription = {
+const mockSubscription: Subscription = {
   id: "sub-456",
   planId: "pro",
   planName: "Pro",
@@ -101,7 +101,7 @@ const availablePlans: PricingPlan[] = [
 export default function ProfilePage() {
   const [isLoading, setIsLoading] = React.useState(false)
   const [userProfile, setUserProfile] = React.useState<UserProfile>(mockUserProfile)
-  const [subscription, setSubscription] = React.useState<UserSubscription>(mockSubscription)
+  const [subscription, setSubscription] = React.useState<Subscription>(mockSubscription)
   const [creditUsage, setCreditUsage] = React.useState<CreditUsage[]>(mockCreditUsage)
   const [notifications, setNotifications] = React.useState<NotificationPreferences>(mockNotificationPreferences)
 
@@ -197,7 +197,7 @@ export default function ProfilePage() {
             {/* Credits Meter */}
             <CreditsMeter
               subscription={subscription}
-              creditUsage={creditUsage}
+              usage={creditUsage}
             />
 
             {/* Account Settings */}

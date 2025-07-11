@@ -46,6 +46,7 @@ export const queryClient = new QueryClient({
 export const queryKeys = {
   // Auth
   auth: {
+    all: ['auth'] as const,
     user: ['auth', 'user'] as const,
   },
   
@@ -177,6 +178,5 @@ export const queryErrorUtils = {
 
 // React Query devtools configuration
 export const devtoolsConfig = {
-  initialIsOpen: false,
-  position: 'bottom-right' as const,
+  initialIsOpen: false
 }

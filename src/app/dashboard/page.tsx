@@ -65,7 +65,7 @@ export default function DashboardPage() {
               </p>
             </div>
             <Button asChild size="lg" className="group relative px-8 py-3 bg-black text-white hover:bg-gray-900 transition-all duration-200 shadow-sm hover:shadow-md">
-              <Link href="/" className="flex items-center gap-3">
+              <Link href="/#upload-section" className="flex items-center gap-3">
                 <div className="flex items-center justify-center w-5 h-5 rounded-full bg-white/20 group-hover:bg-white/30 transition-colors duration-200">
                   <Plus className="h-3 w-3 text-white" strokeWidth={2.5} />
                 </div>

@@ -124,7 +124,7 @@ export function useUploadAvatar() {
       if (currentProfile) {
         queryClient.setQueryData(queryKeys.user.profile(), {
           ...currentProfile,
-          avatar_url: result.avatar_url,
+          avatarUrl: result.avatarUrl, // Corrected to result.avatarUrl
         })
       }
       
@@ -133,7 +133,7 @@ export function useUploadAvatar() {
       if (currentUser) {
         queryClient.setQueryData(queryKeys.auth.user, {
           ...currentUser,
-          avatar_url: result.avatar_url,
+          avatarUrl: result.avatarUrl, // Corrected to result.avatarUrl
         })
       }
     },
@@ -152,7 +152,7 @@ export function useDeleteAvatar() {
       if (currentProfile) {
         queryClient.setQueryData(queryKeys.user.profile(), {
           ...currentProfile,
-          avatar_url: undefined,
+          avatarUrl: undefined, 
         })
       }
       
@@ -161,7 +161,7 @@ export function useDeleteAvatar() {
       if (currentUser) {
         queryClient.setQueryData(queryKeys.auth.user, {
           ...currentUser,
-          avatar_url: undefined,
+          avatarUrl: undefined, 
         })
       }
     },
