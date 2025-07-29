@@ -79,7 +79,7 @@ export interface ResetPasswordResponse {
   message: string
 }
 
-// User Profile Types (extending existing)
+// User Profile & Account Types
 export interface UserProfile {
   id: string
   email: string
@@ -105,7 +105,42 @@ export interface ChangePasswordRequest {
   confirmPassword: string
 }
 
-// Video Project Types (extending existing)
+export interface PasswordChangeData {
+  currentPassword: string
+  newPassword: string
+  confirmPassword: string
+}
+
+export interface ProfileFormData {
+  fullName: string
+  email: string
+  phone: string
+}
+
+export interface ProfileFormErrors {
+  fullName?: string
+  email?: string
+  phone?: string
+  general?: string
+}
+
+export interface ProfileUpdateResponse {
+  success: boolean
+  message: string
+  user?: UserProfile
+}
+
+export interface PasswordChangeResponse {
+  success: boolean
+  message: string
+}
+
+export interface AccountDeletionResponse {
+  success: boolean
+  message: string
+}
+
+// Video Project Types
 export interface VideoProject {
   id: string
   title: string
@@ -181,6 +216,10 @@ export interface StartDubbingResponse {
   message: string
 }
 
+export type ViewMode = 'grid' | 'list'
+export type SortOption = 'dateCreated' | 'title' | 'duration'
+export type FilterStatus = 'all' | 'processing' | 'completed' | 'failed' | 'draft'
+
 // Subscription & Billing Types
 export interface Subscription {
   id: string
@@ -224,6 +263,13 @@ export interface SubscribeResponse {
   requiresAction?: boolean
 }
 
+export interface PricingFeature {
+  name: string
+  basic: string | boolean | number
+  pro: string | boolean | number
+  enterprise: string | boolean | number
+}
+
 // Credit Usage Types
 export interface CreditUsage {
   id: string
@@ -243,7 +289,7 @@ export interface CreditUsageRequest {
   operation?: string
 }
 
-// Dashboard Stats Types
+// Dashboard & Analytics Types
 export interface DashboardStats {
   totalVideos: number
   processing: number
@@ -253,6 +299,23 @@ export interface DashboardStats {
   creditsRemaining: number
   storageUsed: number // in bytes
   storageLimit: number // in bytes
+}
+
+export interface VideoAnalytics {
+  videoId: string
+  views: number
+  downloads: number
+  shares: number
+  averageWatchTime: number
+  completionRate: number
+  geographicData: Array<{
+    country: string
+    views: number
+  }>
+  deviceData: Array<{
+    deviceType: string
+    views: number
+  }>
 }
 
 // Language & Voice Types
@@ -274,7 +337,7 @@ export interface Voice {
   isPremium: boolean
 }
 
-// Notification Types
+// Notification & Webhook Types
 export interface Notification {
   id: string
   type: 'info' | 'success' | 'warning' | 'error'
@@ -293,7 +356,6 @@ export interface NotificationPreferences {
   securityAlerts: boolean
 }
 
-// Webhook Types (for real-time updates)
 export interface WebhookEvent {
   eventType: 'video.processing.started' | 'video.processing.completed' | 'video.processing.failed' | 'subscription.updated'
   data: any
@@ -314,25 +376,7 @@ export interface FileUploadResponse {
   expiresAt: string
 }
 
-// Analytics Types
-export interface VideoAnalytics {
-  videoId: string
-  views: number
-  downloads: number
-  shares: number
-  averageWatchTime: number
-  completionRate: number
-  geographicData: Array<{
-    country: string
-    views: number
-  }>
-  deviceData: Array<{
-    deviceType: string
-    views: number
-  }>
-}
-
-// Error Types
+// Error & Validation Types
 export interface ValidationError {
   field: string
   message: string
@@ -343,51 +387,3 @@ export interface ApiValidationError extends ApiError {
   details: ValidationError[]
 }
 
-// From user.ts
-export interface PasswordChangeData {
-  currentPassword: string
-  newPassword: string
-  confirmPassword: string
-}
-
-export interface ProfileFormData {
-  fullName: string
-  email: string
-  phone: string
-}
-
-export interface ProfileFormErrors {
-  fullName?: string
-  email?: string
-  phone?: string
-  general?: string
-}
-
-export interface ProfileUpdateResponse {
-  success: boolean
-  message: string
-  user?: UserProfile
-}
-
-export interface PasswordChangeResponse {
-  success: boolean
-  message: string
-}
-
-export interface AccountDeletionResponse {
-  success: boolean
-  message: string
-}
-
-// From video.ts
-export type ViewMode = 'grid' | 'list'
-export type SortOption = 'dateCreated' | 'title' | 'duration'
-export type FilterStatus = 'all' | 'processing' | 'completed' | 'failed' | 'draft'
-
-// From pricing.ts
-export interface PricingFeature {
-  name: string
-  basic: string | boolean | number
-  pro: string | boolean | number
-  enterprise: string | boolean | number
-}

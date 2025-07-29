@@ -2,87 +2,6 @@
 
 This guide provides comprehensive instructions for integrating your OneVoice frontend with a FastAPI backend.
 
-## 🚀 Quick Start
-
-### 1. Automated Setup
-
-Run the setup script to configure your project automatically:
-
-```bash
-node scripts/setup-api-integration.js
-```
-
-This will:
-- Create `.env.local` from `.env.example`
-- Update your root layout with providers
-- Add necessary scripts to `package.json`
-- Create Jest configuration
-- Check for required dependencies
-
-### 2. Environment Configuration
-
-Update `.env.local` with your FastAPI backend URL:
-
-```env
-NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
-NEXT_PUBLIC_API_VERSION=v1
-```
-
-
-
-### 3. Migrate Existing Pages
-
-Use the migration script to automatically update your pages:
-
-```bash
-npm run migrate-to-api
-```
-
-This will:
-- Replace mock data imports with API hooks
-- Add authentication checks
-- Add error handling imports
-- Create backup files for safety
-
-### 4. Manual Review
-
-Review the migrated files and add specific API integrations:
-- `src/app/dashboard/page-with-api.tsx.example`
-- `src/app/login/page-with-api.tsx.example`
-
-## 📋 Required FastAPI Endpoints
-
-Your FastAPI backend should implement these endpoints:
-
-### Authentication
-- `POST /api/v1/auth/login` - User login
-- `POST /api/v1/auth/signup` - User registration
-- `POST /api/v1/auth/logout` - User logout
-- `POST /api/v1/auth/refresh` - Token refresh
-- `POST /api/v1/auth/forgot-password` - Password reset request
-- `POST /api/v1/auth/reset-password` - Password reset confirmation
-
-### User Management
-- `GET /api/v1/users/profile` - Get user profile
-- `PUT /api/v1/users/profile` - Update user profile
-- `GET /api/v1/users/subscription` - Get subscription details
-- `GET /api/v1/users/dashboard/stats` - Get dashboard statistics
-
-### Video Management
-- `GET /api/v1/videos` - List videos (with pagination, filtering, sorting)
-- `GET /api/v1/videos/{id}` - Get specific video
-- `POST /api/v1/videos` - Create video project
-- `PUT /api/v1/videos/{id}` - Update video
-- `DELETE /api/v1/videos/{id}` - Delete video
-- `POST /api/v1/videos/upload` - Upload video file
-- `POST /api/v1/videos/{id}/dub` - Start dubbing process
-- `GET /api/v1/videos/{id}/status` - Get processing status
-
-### Billing
-- `GET /api/v1/billing/plans` - Get pricing plans
-- `POST /api/v1/billing/subscribe` - Subscribe to plan
-- `GET /api/v1/billing/subscription` - Get current subscription
-
 ## 🔧 Implementation Steps
 
 ### Step 1: Update Type Definitions
@@ -93,7 +12,6 @@ The existing types in `src/types/` have been extended with API-specific interfac
 - Extended existing types with API-compatible fields
 
 ### Step 2: HTTP Client Setup
-+axios 사용하게 요청?
 The HTTP client (`src/lib/http-client.ts`) provides:
 
 - Automatic JWT token management
@@ -266,5 +184,3 @@ const handleUpload = (file: File) => {
 - **Services**: `src/services/*.ts`
 - **Hooks**: `src/hooks/*.ts`
 - **UI Components**: `src/components/ui/error-*.tsx`, `src/components/ui/loading-*.tsx`
-
-This integration provides a robust, scalable foundation for your FastAPI backend connection with excellent user experience, error handling, and performance optimization.

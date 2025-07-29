@@ -1,14 +1,14 @@
 import Link from "next/link"
 
 const footerNavigation = {
-  service: [
-    { name: "Features", href: "/features" },
-    { name: "How it Works", href: "/how-it-works" },
-  ],
-  company: [
-    { name: "About", href: "/about" },
-    { name: "Blog", href: "/blog" },
-  ],
+  // service: [
+  //   { name: "Features", href: "/features" },
+  //   { name: "How it Works", href: "/how-it-works" },
+  // ],
+  // company: [
+  //   { name: "About", href: "/about" },
+  //   { name: "Blog", href: "/blog" },
+  // ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
@@ -32,7 +32,7 @@ export function Footer() {
             </div>
 
             {/* Service Links */}
-            <div>
+            {/* <div>
               <h3 className="text-sm font-semibold text-black uppercase tracking-wider">
                 Service
               </h3>
@@ -48,10 +48,10 @@ export function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
 
             {/* Company Links */}
-            <div>
+            {/* <div>
               <h3 className="text-sm font-semibold text-black uppercase tracking-wider">
                 Company
               </h3>
@@ -67,10 +67,10 @@ export function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
 
             {/* Legal Links */}
-            <div>
+            <div className="md:col-start-4">
               <h3 className="text-sm font-semibold text-black uppercase tracking-wider">
                 Legal
               </h3>

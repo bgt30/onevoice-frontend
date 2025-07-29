@@ -3,6 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { AppProviders } from "@/providers/app-providers";
+import StagewiseToolbarInitializer from "@/components/stagewise/stagewise-toolbar-initializer";
 
 export const metadata: Metadata = {
   title: "OneVoice - Professional Video Dubbing Service",
@@ -25,6 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen bg-white text-black antialiased">
         <AppProviders>
+          {process.env.NODE_ENV === "development" && <StagewiseToolbarInitializer />}
           <div className="flex min-h-screen flex-col">
             <Header />
             <main className="flex-1">
