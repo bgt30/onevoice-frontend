@@ -1,16 +1,15 @@
 "use client"
 
 import * as React from "react"
-import { 
-  Settings, 
-  Lock, 
-  Bell, 
-  Trash2, 
-  Eye, 
-  EyeOff, 
+import {
+  Lock,
+  Bell,
+  Trash2,
+  Eye,
+  EyeOff,
   AlertTriangle,
   Check,
-  AlertCircle 
+  AlertCircle
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -96,7 +95,7 @@ export function AccountSettings({
       })
       setPasswordSuccess(true)
       setTimeout(() => setPasswordSuccess(false), 3000)
-    } catch (error) {
+    } catch {
       setPasswordErrors(["Failed to change password. Please try again."])
     } finally {
       setIsChangingPassword(false)

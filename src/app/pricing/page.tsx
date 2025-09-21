@@ -192,7 +192,7 @@ export default function PricingPage() {
               Compare Features
             </h2>
             <p className="text-base sm:text-lg text-gray-600">
-              See what's included in each plan
+              See what&apos;s included in each plan
             </p>
           </div>
 
@@ -205,7 +205,7 @@ export default function PricingPage() {
             Need a custom solution?
           </h3>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Contact our sales team for enterprise pricing and custom features tailored to your organization's needs.
+            Contact our sales team for enterprise pricing and custom features tailored to your organization&apos;s needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="px-6 py-3 bg-black text-white rounded-md hover:bg-gray-900 transition-colors">

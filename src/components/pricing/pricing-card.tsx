@@ -15,10 +15,6 @@ interface PricingCardProps {
 }
 
 export function PricingCard({ plan, onSelect, isLoading = false }: PricingCardProps) {
-  const formatPrice = (price: number, currency: string, period: string) => {
-    return `$${price}/${period}`
-  }
-
   const formatCredits = (credits: number | 'unlimited') => {
     if (credits === 'unlimited') return 'Unlimited credits'
     return `${credits} credits included`

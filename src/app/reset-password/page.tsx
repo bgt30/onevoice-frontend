@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import { AuthLayout } from "@/components/auth/auth-layout"
 import { validateNewPasswordForm, ValidationError } from "@/lib/validation"
 
-export default function ResetPasswordPage() {
+function ResetPasswordContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const token = searchParams.get('token')
@@ -81,7 +81,7 @@ export default function ResetPasswordPage() {
       
       // Successful password reset
       setIsSuccess(true)
-    } catch (error) {
+    } catch {
       setResetError("An error occurred. Please try again.")
     } finally {
       setIsLoading(false)
@@ -312,5 +312,17 @@ export default function ResetPasswordPage() {
         </div>
       </form>
     </AuthLayout>
+  )
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <React.Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-black"></div>
+      </div>
+    }>
+      <ResetPasswordContent />
+    </React.Suspense>
   )
 }

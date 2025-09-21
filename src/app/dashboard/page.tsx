@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { Search, Plus, Grid3X3, List, SlidersHorizontal } from "lucide-react"
+import { Search, Plus, Grid3X3, List } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Select } from "@/components/ui/select"
@@ -10,7 +10,7 @@ import { VideoCard } from "@/components/dashboard/video-card"
 import { DashboardStatsComponent } from "@/components/dashboard/dashboard-stats"
 import { EmptyState } from "@/components/dashboard/empty-state"
 import { mockVideoProjects, mockDashboardStats } from "@/lib/mock-data"
-import { VideoProject, ViewMode, SortOption, FilterStatus } from "@/types/api"
+import { ViewMode, SortOption, FilterStatus } from "@/types/api"
 import { cn } from "@/lib/utils"
 
 export default function DashboardPage() {
@@ -45,7 +45,7 @@ export default function DashboardPage() {
           return b.duration - a.duration
         case "dateCreated":
         default:
-          return b.createdAt.getTime() - a.createdAt.getTime()
+          return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
       }
     })
 

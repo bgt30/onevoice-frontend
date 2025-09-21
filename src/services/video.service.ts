@@ -198,7 +198,7 @@ export class VideoService {
     started_at: string
     completed_at?: string
     error_message?: string
-    settings: any
+    settings: unknown
   }>> {
     return httpClient.get(`videos/${videoId}/history`)
   }

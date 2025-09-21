@@ -5,7 +5,7 @@ export class ApiError extends Error {
   constructor(
     public status: number,
     public message: string,
-    public data?: any
+    public data?: unknown
   ) {
     super(message)
     this.name = 'ApiError'
@@ -20,7 +20,7 @@ export class NetworkError extends Error {
 }
 
 // Request/Response Types
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   data: T
   message?: string
   success: boolean
@@ -29,7 +29,7 @@ export interface ApiResponse<T = any> {
 export interface ApiErrorResponse {
   error: string
   message: string
-  details?: any
+  details?: unknown
 }
 
 export interface RequestConfig {
@@ -154,8 +154,8 @@ class HttpClient {
 
   private async handleResponse<T>(response: Response): Promise<T> {
     if (!response.ok) {
-      let errorMessage = ERROR_MESSAGES.SERVER_ERROR
-      let errorData: any = null
+      let errorMessage: string = ERROR_MESSAGES.SERVER_ERROR
+      let errorData: unknown = null
 
       try {
         const errorResponse: ApiErrorResponse = await response.json()
@@ -185,12 +185,12 @@ class HttpClient {
     try {
       const data: ApiResponse<T> = await response.json()
       return data.data
-    } catch (error) {
+    } catch {
       throw new NetworkError('Failed to parse response')
     }
   }
 
-  async request<T = any>(
+  async request<T = unknown>(
     endpoint: string,
     options: RequestInit & RequestConfig = {}
   ): Promise<T> {
@@ -234,11 +234,11 @@ class HttpClient {
   }
 
   // Convenience methods
-  async get<T = any>(endpoint: string, config?: RequestConfig): Promise<T> {
+  async get<T = unknown>(endpoint: string, config?: RequestConfig): Promise<T> {
     return this.request<T>(endpoint, { method: 'GET', ...config })
   }
 
-  async post<T = any>(endpoint: string, data?: any, config?: RequestConfig): Promise<T> {
+  async post<T = unknown>(endpoint: string, data?: unknown, config?: RequestConfig): Promise<T> {
     return this.request<T>(endpoint, {
       method: 'POST',
       body: data ? JSON.stringify(data) : undefined,
@@ -246,7 +246,7 @@ class HttpClient {
     })
   }
 
-  async put<T = any>(endpoint: string, data?: any, config?: RequestConfig): Promise<T> {
+  async put<T = unknown>(endpoint: string, data?: unknown, config?: RequestConfig): Promise<T> {
     return this.request<T>(endpoint, {
       method: 'PUT',
       body: data ? JSON.stringify(data) : undefined,
@@ -254,15 +254,15 @@ class HttpClient {
     })
   }
 
-  async delete<T = any>(endpoint: string, config?: RequestConfig): Promise<T> {
+  async delete<T = unknown>(endpoint: string, config?: RequestConfig): Promise<T> {
     return this.request<T>(endpoint, { method: 'DELETE', ...config })
   }
 
   // File upload method
-  async uploadFile<T = any>(
+  async uploadFile<T = unknown>(
     endpoint: string,
     file: File,
-    additionalData?: Record<string, any>,
+    additionalData?: Record<string, unknown>,
     onProgress?: (progress: number) => void
   ): Promise<T> {
     const authHeaders = await this.getAuthHeaders()

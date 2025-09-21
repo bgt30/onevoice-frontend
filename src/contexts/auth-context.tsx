@@ -40,24 +40,25 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   // Initialize auth state on mount
   useEffect(() => {
-    initializeAuth()
-  }, [])
-
-  const initializeAuth = async () => {
-    try {
-      const token = tokenManager.getToken()
-      if (token && !tokenManager.isTokenExpired(token)) {
-        await fetchUser()
+    const initializeAuth = async () => {
+      try {
+        const token = tokenManager.getToken()
+        if (token && !tokenManager.isTokenExpired(token)) {
+          await fetchUser()
+        }
+      } catch (error) {
+        console.error('Failed to initialize auth:', error)
+        tokenManager.clearTokens()
+      } finally {
+        setIsLoading(false)
       }
-    } catch (error) {
-      console.error('Failed to initialize auth:', error)
-      tokenManager.clearTokens()
-    } finally {
-      setIsLoading(false)
     }
-  }
 
-  const fetchUser = async () => {
+    initializeAuth()
+  }, [tokenManager])
+
+
+  const fetchUser = useCallback(async () => {
     try {
       const userData = await httpClient.get<UserProfile>('users/profile')
       setUser(userData)
@@ -67,7 +68,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       setUser(null)
       throw error
     }
-  }
+  }, [setUser, tokenManager])
 
   const login = useCallback(async (credentials: LoginRequest) => {
     try {

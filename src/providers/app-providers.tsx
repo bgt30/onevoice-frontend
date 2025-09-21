@@ -8,13 +8,7 @@ import { ToastProvider } from '@/components/ui/toast'
 import { ErrorBoundary } from '@/components/ui/error-boundary'
 
 import { queryClient, devtoolsConfig } from '@/lib/query-client'
-import { useRealtimeUpdates } from '@/hooks/use-realtime-updates'
-
-// Component to initialize real-time updates
-function RealtimeProvider({ children }: { children: React.ReactNode }) {
-  useRealtimeUpdates()
-  return <>{children}</>
-}
+// WebSocket-based realtime updates removed; polling-only strategy in hooks
 
 interface AppProvidersProps {
   children: React.ReactNode
@@ -26,12 +20,10 @@ export function AppProviders({ children }: AppProvidersProps) {
       <QueryClientProvider client={queryClient}>
         <ToastProvider>
           <AuthProvider>
-            <RealtimeProvider>
-              {children}
-              {process.env.NODE_ENV === 'development' && (
-                <ReactQueryDevtools {...devtoolsConfig} />
-              )}
-            </RealtimeProvider>
+            {children}
+            {process.env.NODE_ENV === 'development' && (
+              <ReactQueryDevtools {...devtoolsConfig} />
+            )}
           </AuthProvider>
         </ToastProvider>
       </QueryClientProvider>

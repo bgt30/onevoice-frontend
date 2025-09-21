@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { AlertCircle, CheckCircle, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -10,7 +9,6 @@ import { AuthLayout } from "@/components/auth/auth-layout"
 import { validatePasswordResetForm, ValidationError } from "@/lib/validation"
 
 export default function ForgotPasswordPage() {
-  const router = useRouter()
   const [email, setEmail] = React.useState("")
   const [errors, setErrors] = React.useState<ValidationError[]>([])
   const [isLoading, setIsLoading] = React.useState(false)
@@ -56,7 +54,7 @@ export default function ForgotPasswordPage() {
       
       // Successful password reset request
       setIsSuccess(true)
-    } catch (error) {
+    } catch {
       setResetError("An error occurred. Please try again.")
     } finally {
       setIsLoading(false)
@@ -82,7 +80,7 @@ export default function ForgotPasswordPage() {
           {/* Success Message */}
           <div className="space-y-2">
             <p className="text-sm text-gray-600">
-              We've sent a password reset link to:
+              We&apos;ve sent a password reset link to:
             </p>
             <p className="font-medium text-black">{email}</p>
           </div>
@@ -93,7 +91,7 @@ export default function ForgotPasswordPage() {
               <Mail className="h-5 w-5 text-gray-400 mt-0.5" />
               <div className="text-left">
                 <p className="text-sm text-gray-700 font-medium mb-1">
-                  What's next?
+                  What&apos;s next?
                 </p>
                 <ul className="text-sm text-gray-600 space-y-1">
                   <li>• Check your email inbox</li>

@@ -11,9 +11,13 @@ import { UserProfile, Subscription, CreditUsage, NotificationPreferences, Pricin
 const mockUserProfile: UserProfile = {
   id: "user-123",
   email: "demo@onevoice.com",
+  firstName: "John",
+  lastName: "Doe",
   fullName: "John Doe",
   phone: "+1 (555) 123-4567",
-  createdAt: new Date("2024-01-15")
+  isVerified: true,
+  createdAt: "2024-01-15T00:00:00Z",
+  updatedAt: "2024-06-30T00:00:00Z"
 }
 
 const mockSubscription: Subscription = {
@@ -21,12 +25,14 @@ const mockSubscription: Subscription = {
   planId: "pro",
   planName: "Pro",
   status: "active",
+  currentPeriodStart: "2024-06-01T00:00:00Z",
+  currentPeriodEnd: "2024-07-01T00:00:00Z",
+  cancelAtPeriodEnd: false,
   creditsRemaining: 180,
   creditsTotal: 250,
-  nextBillingDate: new Date("2024-07-30"),
   billingAmount: 29,
   currency: "USD",
-  isTrialPeriod: false
+  isTrial: false
 }
 
 const mockCreditUsage: CreditUsage[] = [
@@ -101,8 +107,8 @@ const availablePlans: PricingPlan[] = [
 export default function ProfilePage() {
   const [isLoading, setIsLoading] = React.useState(false)
   const [userProfile, setUserProfile] = React.useState<UserProfile>(mockUserProfile)
-  const [subscription, setSubscription] = React.useState<Subscription>(mockSubscription)
-  const [creditUsage, setCreditUsage] = React.useState<CreditUsage[]>(mockCreditUsage)
+  const [subscription] = React.useState<Subscription>(mockSubscription)
+  const [creditUsage] = React.useState<CreditUsage[]>(mockCreditUsage)
   const [notifications, setNotifications] = React.useState<NotificationPreferences>(mockNotificationPreferences)
 
   const handleProfileUpdate = async (profileData: Partial<UserProfile>) => {

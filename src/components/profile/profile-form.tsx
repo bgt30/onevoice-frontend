@@ -105,7 +105,7 @@ export function ProfileForm({ user, onUpdate, isLoading = false }: ProfileFormPr
       
       // Clear success message after 3 seconds
       setTimeout(() => setSaveSuccess(false), 3000)
-    } catch (error) {
+    } catch {
       setErrors({ general: "Failed to update profile. Please try again." })
     }
   }

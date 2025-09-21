@@ -60,7 +60,7 @@ export default function LoginPage() {
       } else {
         setLoginError("Invalid email or password. Please try again.")
       }
-    } catch (error) {
+    } catch {
       setLoginError("An error occurred. Please try again.")
     } finally {
       setIsLoading(false)
@@ -187,7 +187,7 @@ export default function LoginPage() {
         {/* Sign Up Link */}
         <div className="text-center">
           <p className="text-sm text-gray-600">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link
               href="/signup"
               className="font-medium text-black hover:underline"

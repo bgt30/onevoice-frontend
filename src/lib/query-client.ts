@@ -7,7 +7,7 @@ const defaultQueryOptions = {
   queries: {
     staleTime: 5 * 60 * 1000, // 5 minutes
     gcTime: 10 * 60 * 1000, // 10 minutes (formerly cacheTime)
-    retry: (failureCount: number, error: any) => {
+    retry: (failureCount: number, error: unknown) => {
       // Don't retry on authentication errors
       if (error instanceof ApiError && (error.status === 401 || error.status === 403)) {
         return false
@@ -54,7 +54,7 @@ export const queryKeys = {
   videos: {
     all: ['videos'] as const,
     lists: () => [...queryKeys.videos.all, 'list'] as const,
-    list: (params: Record<string, any>) => [...queryKeys.videos.lists(), params] as const,
+    list: (params: Record<string, unknown>) => [...queryKeys.videos.lists(), params] as const,
     details: () => [...queryKeys.videos.all, 'detail'] as const,
     detail: (id: string) => [...queryKeys.videos.details(), id] as const,
     status: (id: string) => [...queryKeys.videos.detail(id), 'status'] as const,
@@ -69,7 +69,7 @@ export const queryKeys = {
     profile: () => [...queryKeys.user.all, 'profile'] as const,
     subscription: () => [...queryKeys.user.all, 'subscription'] as const,
     credits: () => [...queryKeys.user.all, 'credits'] as const,
-    creditUsage: (params: Record<string, any>) => [...queryKeys.user.credits(), 'usage', params] as const,
+    creditUsage: (params: Record<string, unknown>) => [...queryKeys.user.credits(), 'usage', params] as const,
     dashboardStats: () => [...queryKeys.user.all, 'dashboardStats'] as const,
     notifications: () => [...queryKeys.user.all, 'notifications'] as const,
     notificationPreferences: () => [...queryKeys.user.all, 'notificationPreferences'] as const,
@@ -113,7 +113,7 @@ export const cacheUtils = {
   },
   
   // Prefetch query
-  prefetch: (queryKey: readonly unknown[], queryFn: () => Promise<any>) => {
+  prefetch: (queryKey: readonly unknown[], queryFn: () => Promise<unknown>) => {
     return queryClient.prefetchQuery({
       queryKey,
       queryFn,
@@ -124,7 +124,7 @@ export const cacheUtils = {
   optimisticUpdate: async <T>(
     queryKey: readonly unknown[],
     updater: (oldData: T | undefined) => T,
-    mutationFn: () => Promise<any>
+    mutationFn: () => Promise<unknown>
   ) => {
     // Cancel any outgoing refetches
     await queryClient.cancelQueries({ queryKey })

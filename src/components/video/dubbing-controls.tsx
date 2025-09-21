@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Settings, Volume2, Mic, Languages, Wand2 } from "lucide-react"
+import { Settings, Mic, Languages, Wand2 } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Select } from "@/components/ui/select"
@@ -11,7 +11,7 @@ import { VideoProject } from "@/types/api"
 
 interface DubbingControlsProps {
   video: VideoProject
-  onSettingsChange?: (settings: any) => void
+  onSettingsChange?: (settings: unknown) => void
 }
 
 const languages = [

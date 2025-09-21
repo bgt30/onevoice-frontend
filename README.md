@@ -40,12 +40,12 @@ graph TD
         subgraph "Hooks"
             UseUser[useUser]
             UseVideos[useVideos]
-            UseRealtimeUpdates[useRealtimeUpdates]
+            UseVideoStatus[useVideoStatus]
         end
         
         subgraph "Utilities"
             HttpClient[HTTP Client]
-            WebSocketManager[WebSocket Manager]
+            Polling[Polling (React Query)]
             MockData[Mock Data]
         end
         
@@ -58,7 +58,6 @@ graph TD
     App --> AppProviders
     App --> AuthContext
     App --> ErrorBoundary
-    App --> WebSocketManager
     
     Layout --> LoginPage
     Layout --> SignupPage
@@ -75,27 +74,26 @@ graph TD
     AppProviders --> AuthContext
     AppProviders --> UseUser
     AppProviders --> UseVideos
-    AppProviders --> UseRealtimeUpdates
+    AppProviders --> UseVideoStatus
     
     UseUser --> AuthService
     UseVideos --> VideoService
-    UseRealtimeUpdates --> WebSocketManager
+    UseVideoStatus --> VideoService
     
     AuthService -->|fetches| User
     VideoService -->|fetches| Video
-    WebSocketManager -->|manages| UseRealtimeUpdates
+    Polling -->|schedules| UseVideoStatus
     
     ErrorBoundary -.->|catches| User
     ErrorBoundary -.->|displays| Toast
     
-    %% Data Flow
+    %% Data Flow (Polling)
     User -->|logs in| AuthService
     User -->|uploads video| VideoService
     User -->|updates profile| UserService
     User -->|initiates dubbing| VideoService
-    WebSocketManager -->|receives updates| UseRealtimeUpdates
-    UseRealtimeUpdates -->|updates UI| DashboardPage
-    UseRealtimeUpdates -->|displays notifications| Toast
+    UseVideoStatus -->|polls status| VideoService
+    UseVideoStatus -->|updates UI| DashboardPage
     
     %% Error Handling
     ErrorBoundary -->|catches errors| User

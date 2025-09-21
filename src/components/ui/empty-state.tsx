@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react'
-import { Plus, Search, FileVideo, Upload, AlertCircle } from 'lucide-react'
+import { Search, FileVideo, Upload, AlertCircle } from 'lucide-react'
 import { Button } from './button'
 import { cn } from '@/lib/utils'
 

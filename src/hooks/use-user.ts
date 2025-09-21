@@ -29,7 +29,7 @@ export function useUserSubscription() {
 // Get credit usage
 export function useCreditUsage(params: CreditUsageRequest = {}) {
   return useQuery({
-    queryKey: queryKeys.user.creditUsage(params),
+    queryKey: queryKeys.user.creditUsage(params as Record<string, unknown>),
     queryFn: () => UserService.getCreditUsage(params),
     staleTime: 5 * 60 * 1000, // 5 minutes
   })

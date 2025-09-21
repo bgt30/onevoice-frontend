@@ -12,7 +12,7 @@ import {
 // Get videos list
 export function useVideos(params: VideoListRequest = {}) {
   return useQuery({
-    queryKey: queryKeys.videos.list(params),
+    queryKey: queryKeys.videos.list(params as Record<string, unknown>),
     queryFn: () => VideoService.getVideos(params),
     staleTime: 2 * 60 * 1000, // 2 minutes
   })

@@ -1,5 +1,5 @@
 // Base API Response Types
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   data: T
   message?: string
   success: boolean
@@ -8,7 +8,7 @@ export interface ApiResponse<T = any> {
 export interface ApiError {
   error: string
   message: string
-  details?: any
+  details?: unknown
   statusCode: number
 }
 
@@ -358,7 +358,7 @@ export interface NotificationPreferences {
 
 export interface WebhookEvent {
   eventType: 'video.processing.started' | 'video.processing.completed' | 'video.processing.failed' | 'subscription.updated'
-  data: any
+  data: unknown
   timestamp: string
 }
 

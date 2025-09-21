@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { CreditCard, Calendar, ArrowUpRight, ArrowDownRight, Star, Crown } from "lucide-react"
+import { CreditCard, ArrowUpRight, ArrowDownRight, Star, Crown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Subscription, PricingPlan } from "@/types/api"
-import { cn } from "@/lib/utils"
 
 interface SubscriptionCardProps {
   subscription: Subscription

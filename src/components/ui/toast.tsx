@@ -56,7 +56,7 @@ export function ToastProvider({ children }: ToastProviderProps) {
     setToasts(prev => [...prev, newToast])
 
     // Auto remove toast after duration
-    if (newToast.duration > 0) {
+    if (newToast.duration && newToast.duration > 0) {
       setTimeout(() => {
         removeToast(id)
       }, newToast.duration)
@@ -67,11 +67,11 @@ export function ToastProvider({ children }: ToastProviderProps) {
 
   const removeToast = useCallback((id: string) => {
     setToasts(prev => prev.filter(toast => toast.id !== id))
-  }, [])
+  }, [setToasts])
 
   const clearToasts = useCallback(() => {
     setToasts([])
-  }, [])
+  }, [setToasts])
 
   return (
     <ToastContext.Provider value={{ toasts, addToast, removeToast, clearToasts }}>

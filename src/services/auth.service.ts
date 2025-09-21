@@ -4,11 +4,9 @@ import {
   LoginResponse,
   SignupRequest,
   SignupResponse,
-  ForgotPasswordRequest,
   ForgotPasswordResponse,
   ResetPasswordRequest,
   ResetPasswordResponse,
-  RefreshTokenRequest,
   RefreshTokenResponse,
   UserProfile,
 } from '@/types/api'

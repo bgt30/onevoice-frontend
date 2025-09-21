@@ -3,13 +3,12 @@
 import * as React from "react"
 import { useParams, useRouter } from "next/navigation"
 import Link from "next/link"
-import { 
-  ArrowLeft, 
-  Download, 
-  Share2, 
-  Edit3, 
-  Trash2, 
-  Play,
+import {
+  ArrowLeft,
+  Download,
+  Share2,
+  Edit3,
+  Trash2,
   MoreVertical,
   Copy,
   ExternalLink
@@ -21,7 +20,6 @@ import { VideoPlayer } from "@/components/video/video-player"
 import { VideoMetadata } from "@/components/video/video-metadata"
 import { DubbingControls } from "@/components/video/dubbing-controls"
 import { mockVideoProjects } from "@/lib/mock-data"
-import { VideoProject } from "@/types/api"
 
 export default function VideoDetailPage() {
   const params = useParams()
@@ -39,7 +37,7 @@ export default function VideoDetailPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-black mb-2">Video Not Found</h1>
-          <p className="text-gray-600 mb-6">The video you're looking for doesn't exist.</p>
+          <p className="text-gray-600 mb-6">The video you&apos;re looking for doesn&apos;t exist.</p>
           <Button asChild>
             <Link href="/dashboard">
               <ArrowLeft className="mr-2 h-4 w-4" />
@@ -181,14 +179,14 @@ export default function VideoDetailPage() {
                   <DialogHeader>
                     <DialogTitle>Delete Video</DialogTitle>
                     <DialogDescription>
-                      Are you sure you want to delete "{video.title}"? This action cannot be undone.
+                      Are you sure you want to delete &quot;{video.title}&quot;? This action cannot be undone.
                     </DialogDescription>
                   </DialogHeader>
                   <DialogFooter>
                     <Button variant="outline" onClick={() => setShowDeleteDialog(false)}>
                       Cancel
                     </Button>
-                    <Button variant="destructive" onClick={handleDelete}>
+                    <Button variant="secondary" onClick={handleDelete}>
                       Delete Video
                     </Button>
                   </DialogFooter>

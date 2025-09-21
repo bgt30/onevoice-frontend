@@ -1,11 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { Zap, TrendingDown, Clock, Video, Languages, Mic } from "lucide-react"
+import { Zap, TrendingDown } from "lucide-react"
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -38,38 +37,19 @@ export function CreditsMeter({ subscription, usage }: CreditsMeterProps) {
     return 'bg-green-500'
   }
 
-  const getOperationIcon = (operation: CreditUsage['operation']) => {
-    switch (operation) {
-      case 'dubbing':
-        return <Video className="h-4 w-4" />
-      case 'translation':
-        return <Languages className="h-4 w-4" />
-      case 'voice_generation':
-        return <Mic className="h-4 w-4" />
-      default:
-        return <Zap className="h-4 w-4" />
-    }
-  }
+  // const getOperationLabel = (operation: CreditUsage['operation']) => {
+  //   switch (operation) {
+  //     case 'dubbing':
+  //       return 'Video Dubbing'
+  //     case 'translation':
+  //       return 'Translation'
+  //     case 'voice_generation':
+  //       return 'Voice Generation'
+  //     default:
+  //       return 'Unknown'
+  //   }
+  // }
 
-  const getOperationLabel = (operation: CreditUsage['operation']) => {
-    switch (operation) {
-      case 'dubbing':
-        return 'Video Dubbing'
-      case 'translation':
-        return 'Translation'
-      case 'voice_generation':
-        return 'Voice Generation'
-      default:
-        return 'Unknown'
-    }
-  }
-
-  const formatDate = (date: Date) => {
-    return date.toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric'
-    })
-  }
 
   const totalUsedThisMonth = usage.reduce((total, usage) => total + usage.creditsUsed, 0)
   const usagePercentage = getUsagePercentage()

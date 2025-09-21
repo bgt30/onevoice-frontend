@@ -164,14 +164,14 @@ export function useConfirmation() {
     } finally {
       setIsLoading(false)
     }
-  }, [state.onConfirm])
+  }, [state.onConfirm, setIsLoading, setState])
 
   const handleCancel = React.useCallback(() => {
     if (state.onCancel) {
       state.onCancel()
     }
     setState(prev => ({ ...prev, open: false }))
-  }, [state.onCancel])
+  }, [state.onCancel, setState])
 
   const ConfirmationComponent = React.useCallback(() => (
     <ConfirmationDialog
